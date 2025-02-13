@@ -22,7 +22,7 @@ jobs:
       - name: Install xvfb
         run: sudo apt-get install xvfb
       - name: Initialise
-        run: touch tests/__init__.py
+        run: touch Tests/__init__.py
       - name: Install pytest
         run: pip install -U pytest
 
