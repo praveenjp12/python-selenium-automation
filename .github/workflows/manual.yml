@@ -7,26 +7,13 @@ jobs:
     steps:
       - name: Checking out repo
         uses: actions/checkout@v3
-      - name: Setting up Python
-        uses: actions/setup-python@v4
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
           python-version: '3.9'
-      - name: Installing package list
-        run: apt list --installed    
-      - name: Removing previous chrome instances on runner 
-        run: sudo apt purge google-chrome-stable  
-        
-       # Need to fetch reqs if needed
-      - name: Installing all necessary packages
-        run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay
-      - name: Install xvfb
-        run: sudo apt-get install xvfb
-      - name: Initialise
-        run: |
-          touch Tests/__init__.py
-          touch Utils/__init__.py
-      - name: Install pytest
-        run: pip install -U pytest
-
-      - name: Running the Python script
-        run: pytest
+      - name: Install software
+        run: sudo apt-get install -y chromium-browser
+      - name: Install the necessary packages
+        run: pip install requests webdriver-manager selenium pytest
+      - name: Run the PytTest script
+        run: pytest -rA
