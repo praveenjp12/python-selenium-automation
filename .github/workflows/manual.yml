@@ -25,4 +25,4 @@ jobs:
         run: pip install -U pytest
 
       - name: Running the Python script
-        run: pytest ./Tests/test_Sort.py
+        run: pytest
