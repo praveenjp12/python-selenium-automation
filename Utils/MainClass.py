@@ -7,6 +7,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.chrome.options import Options
 
 
 class MainClass:
@@ -19,9 +20,22 @@ class MainClass:
 
     def select_browser(self, browser):
         if browser == 'Chrome':
-            options = webdriver.ChromeOptions()
-            options.add_argument("--no-sandbox")
-            driver = webdriver.Chrome(options=options)
+            chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.GOOGLE).install())
+        
+            chrome_options = Options()
+            options = [
+            "--headless",
+            "--disable-gpu",
+            "--window-size=1920,1200",
+            "--ignore-certificate-errors",
+            "--disable-extensions",
+            "--no-sandbox",
+            "--disable-dev-shm-usage"
+        ]
+            for option in options:
+                chrome_options.add_argument(option)
+
+            self.driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
         elif browser == "Firefox":
             browser_options = webdriver.FirefoxOptions()
             browser_options.headless = True
