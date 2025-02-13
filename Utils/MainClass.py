@@ -19,12 +19,9 @@ class MainClass:
 
     def select_browser(self, browser):
         if browser == 'Chrome':
-            # browser_options = webdriver.ChromeOptions()
-            # browser_options.headless = True
-            # browser_options.add_argument("--ignore-certificate-errors")
-            # service = Service(executable_path='../drivers/chromedriver.exe')
-            # self.driver = webdriver.Chrome(service=service, options=browser_options)
-            self.driver = webdriver.Chrome()
+            options = webdriver.ChromeOptions()
+            options.add_argument("--no-sandbox")
+            driver = webdriver.Chrome(options=options)
         elif browser == "Firefox":
             browser_options = webdriver.FirefoxOptions()
             browser_options.headless = True
