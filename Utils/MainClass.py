@@ -9,7 +9,7 @@ from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.utils import ChromeType
+# from webdriver_manager.utils import ChromeType
 
 
 class MainClass:
@@ -22,7 +22,7 @@ class MainClass:
 
     def select_browser(self, browser):
         if browser == 'Chrome':
-            chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.GOOGLE).install())
+            # chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.GOOGLE).install())
         
             chrome_options = Options()
             options = [
@@ -37,7 +37,7 @@ class MainClass:
             for option in options:
                 chrome_options.add_argument(option)
 
-            self.driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
+            self.driver = webdriver.Chrome(options=chrome_options)
         elif browser == "Firefox":
             browser_options = webdriver.FirefoxOptions()
             browser_options.headless = True
