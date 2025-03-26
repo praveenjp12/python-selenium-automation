@@ -18,4 +18,4 @@ jobs:
           source .venv/bin/activate
           pip install -r requirements.txt
       - name: Run the PytTest script
-        run: python -m pytest 
+        run: python3 -m pytest 
